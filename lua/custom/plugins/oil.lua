@@ -17,7 +17,11 @@ return {
       keymaps = {
         ['<c-c>'] = false,
         ['q'] = 'actions.close',
+        -- Disable default <C-h> mapping in Oil
+        ['<C-h>'] = false,
       },
+      -- Override <C-h> to work with window navigation
+      vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move focus to the left window', buffer = true }),
       -- Open parent directory in current window
       vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' }),
       vim.keymap.set('n', '<leader>-', require('oil').toggle_float, { desc = 'Oil File Explorer' }),
